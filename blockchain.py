@@ -23,11 +23,11 @@ class Block:
 
 
 class Blockchain:
-    def __init__(self):
-        self.chain = [self.create_genesis_block()]
+    def __init__(self, time):
+        self.chain = [self.create_genesis_block(time)]
 
-    def create_genesis_block(self):
-        return Block(0, date.datetime.now(), "Genesis Block", "0")
+    def create_genesis_block(self, time):
+        return Block(0, time, "Genesis Block", "0")
 
     def get_latest_block(self):
         return self.chain[-1]
