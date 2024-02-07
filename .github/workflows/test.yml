@@ -13,5 +13,5 @@ jobs:
       - name: Run Tests
         run: |
           cd tests
-          python ./tests.py
+          python ./tests.py -v
      
