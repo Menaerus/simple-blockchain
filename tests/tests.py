@@ -10,14 +10,14 @@ class TestBlockchain(unittest.TestCase):
     self.assertTrue(Blockchain(date.datetime.now()).is_valid())
 
   def test_verify_addingblock(self):
-    self.assertTrue(Blockchain(date.datetime.now()).add_block(Block(1, date.datetime.now(), "First testing block", "")).is_valid())
+    self.assertTrue(Blockchain(date.datetime.now()).add_block(Block(date.datetime.now(), "First testing block")).is_valid())
 
   def test_equality(self):
     genesistime = date.datetime.now()
     b1 = Blockchain(genesistime)
     dates = [date.datetime.now() for i in range(100)]
     strings = [f'Equality Testing Block number {number}' for number in range(len(dates))]
-    blocks = [Block(i+1, dates[i], strings[i], "") for i in range(len(dates))]
+    blocks = [Block(dates[i], strings[i]) for i in range(len(dates))]
     b2 = Blockchain(genesistime)
     for b in blocks:
       b1.add_block(b)
