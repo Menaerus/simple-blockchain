@@ -1,0 +1,9 @@
+name: test-blockchain
+run-name: ${{ github.actor}} is running Blockchain tests
+on: [push]
+jobs:
+  run-tests:
+  on: ubuntu-latest
+  steps:
+    - run: cd tests
+    - run: python ./tests.py
