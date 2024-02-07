@@ -12,6 +12,6 @@ jobs:
           python-version: '3.x'
       - name: Run Tests
         run: |
-        cd tests
-        python ./tests.py
+          cd tests
+          python ./tests.py
      
