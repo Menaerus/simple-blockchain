@@ -24,5 +24,17 @@ class TestBlockchain(unittest.TestCase):
       b2.add_block(b)
     self.assertEqual(str(b1), str(b2))
 
+  def test_remove_last_block(self):
+    genesistime = date.datetime.now()
+    b = Blockchain(genesistime)
+    reference = Blockchain(genesistime)
+    self.assertEqual(str(b.remove_last_block()), str(reference))
+    self.assertEqual(str(b.add_block(Block(date.datetime.now(), "First real block")).remove_last_block()), str(reference))
+    firstblocktime = date.datetime.now()
+    firstblock = Block(firstblocktime, "First real block")
+    reference.add_block(firstblock)
+    b.add_block(firstblock)
+    self.assertEqual(str(b.add_block(Block(date.datetime.now(), "Second block")).remove_last_block()), str(reference))
+
 if __name__ == '__main__':
     unittest.main()

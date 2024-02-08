@@ -62,6 +62,11 @@ class Blockchain:
 
         return True
     
+    def remove_last_block(self):
+        if len(self.chain) > 1: 
+            self.chain.pop()
+        return self
+    
     def __str__(self):
         s ='BLOCKCHAIN:\n'
         for b in self.chain:
