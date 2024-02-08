@@ -43,6 +43,9 @@ class Blockchain:
     def get_latest_block(self):
         return self.chain[-1]
 
+    def get_block(self, i):
+        return self.chain[i]
+    
     def add_block(self, block):
         new_block = InnerBlock(len(self.chain)+1, block, self.get_latest_block().hash)
         new_block.hash = new_block.calculate_hash()
