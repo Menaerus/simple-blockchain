@@ -15,14 +15,22 @@ class TestBlockchain(unittest.TestCase):
   def test_equality(self):
     genesistime = date.datetime.now()
     b1 = Blockchain(genesistime)
+    b2 = Blockchain(genesistime)
     dates = [date.datetime.now() for i in range(100)]
     strings = [f'Equality Testing Block number {number}' for number in range(len(dates))]
     blocks = [Block(dates[i], strings[i]) for i in range(len(dates))]
-    b2 = Blockchain(genesistime)
     for b in blocks:
       b1.add_block(b)
       b2.add_block(b)
     self.assertEqual(str(b1), str(b2))
+
+  def test_get_block(self):
+    b = Blockchain(date.datetime.now())
+    self.assertEqual(str(b.get_block(0)), str(b.get_latest_block()))
+    b.add_block(Block(date.datetime.now(), "First real block"))
+    self.assertNotEqual(str(b.get_block(0)), str(b.get_latest_block()))
+    self.assertEqual(str(b.get_block(1)), str(b.get_latest_block()))
+    
 
 if __name__ == '__main__':
     unittest.main()
