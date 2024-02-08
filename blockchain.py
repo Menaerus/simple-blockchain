@@ -62,6 +62,9 @@ class Blockchain:
 
         return True
     
+    def length(self):
+        return len(self.chain)-1
+    
     def __str__(self):
         s ='BLOCKCHAIN:\n'
         for b in self.chain:
