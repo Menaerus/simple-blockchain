@@ -24,5 +24,10 @@ class TestBlockchain(unittest.TestCase):
       b2.add_block(b)
     self.assertEqual(str(b1), str(b2))
 
+  def test_length(self):
+    b = Blockchain(date.datetime.now())
+    self.assertEqual(b.length(), 0)
+    self.assertEqual(b.add_block(Block(date.datetime.now(), "Un bloque")).length(), 1)
+
 if __name__ == '__main__':
     unittest.main()
