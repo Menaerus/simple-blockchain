@@ -31,6 +31,11 @@ class TestBlockchain(unittest.TestCase):
     self.assertNotEqual(str(b.get_block(0)), str(b.get_latest_block()))
     self.assertEqual(str(b.get_block(1)), str(b.get_latest_block()))
     
-
+  def test_tamper(self):
+    b = Blockchain(date.datetime.now())
+    self.assertTrue(b.is_valid())
+    b.get_block(0).data = "Gesenis Block"
+    self.assertFalse(b.is_valid())
+    
 if __name__ == '__main__':
     unittest.main()
